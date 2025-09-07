@@ -1,23 +1,5 @@
-'use strict';
-
-const e = React.createElement;
-
 class LikeButton extends React.Component {
-  constructor() {
-    super();
-    this.state = {  };
-  }
-
-  render() {
-    if (this.state.liked) {
-      return 'You liked this.';
-    }
-
-    return e(
-      
-    );
-  }
+  constructor(props){ super(props); this.state = { liked: false }; }
+  render(){ return this.state.liked ? 'You liked this.' : React.createElement('button', { onClick: () => this.setState({ liked: true }) }, 'Like'); }
 }
-
-const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+ReactDOM.render(React.createElement(LikeButton), document.getElementById('like_button_container'));
